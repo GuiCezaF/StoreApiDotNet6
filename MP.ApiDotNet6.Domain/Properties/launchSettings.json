@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MP.ApiDotNet6.Domain": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50179;http://localhost:50180"
+    }
+  }
+}
