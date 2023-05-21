@@ -11,10 +11,10 @@ namespace MP.ApiDotNet6.Infra.Data.Maps
             builder.ToTable("Compra");
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id).HasColumnName("IdCompra").UseIdentityColumn();
-            builder.Property(x => x.PersonId).HasColumnName("IdPessoa");
-            builder.Property(x => x.ProductId).HasColumnName("IdProduto");
-            builder.Property(x => x.Date).HasColumnName("DataCompra");
+            builder.Property(x => x.Id).HasColumnName("Idcompra").UseIdentityColumn();
+            builder.Property(x => x.PersonId).HasColumnName("Idpessoa");
+            builder.Property(x => x.ProductId).HasColumnName("Idproduto");
+            builder.Property(x => x.Date).HasColumnName("Datacompra");
 
             builder.HasOne(x => x.Person).WithMany(x => x.Purchases);
 

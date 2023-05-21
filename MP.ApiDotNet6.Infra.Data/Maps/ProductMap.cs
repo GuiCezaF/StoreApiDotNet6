@@ -11,8 +11,8 @@ namespace MP.ApiDotNet6.Infra.Data.Maps
             builder.ToTable("Produto");
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id).HasColumnName("IdProduto").UseIdentityColumn();
-            builder.Property(x => x.CodeErp).HasColumnName("CodErp");
+            builder.Property(x => x.Id).HasColumnName("Idproduto").UseIdentityColumn();
+            builder.Property(x => x.CodeErp).HasColumnName("Coderp");
             builder.Property(x => x.Name).HasColumnName("Nome");
             builder.Property(x => x.Price).HasColumnName("Preco");
 

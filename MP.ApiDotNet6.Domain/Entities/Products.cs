@@ -13,6 +13,8 @@ namespace MP.ApiDotNet6.Domain.Entities
         public Products(string name, string codeErp, decimal price)
         {
             Validation(name, codeErp, price);
+            Purchases = new List<Purchase>();
+
         }
 
         public Products(int id, string name, string codeErp, decimal price)
@@ -20,6 +22,8 @@ namespace MP.ApiDotNet6.Domain.Entities
             DomainValidationException.When(id < 0, "Id do produto deve ser informado");
             Id = id;
             Validation(name, codeErp, price);
+            Purchases = new List<Purchase>();
+
         }
 
         private void Validation(string name, string codeErp, decimal price)

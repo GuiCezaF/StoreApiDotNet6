@@ -13,6 +13,9 @@ namespace MP.ApiDotNet6.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Services.AddServices(builder.Configuration);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
