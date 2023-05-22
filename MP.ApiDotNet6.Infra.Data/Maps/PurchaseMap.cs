@@ -8,13 +8,13 @@ namespace MP.ApiDotNet6.Infra.Data.Maps
     {
         public void Configure(EntityTypeBuilder<Purchase> builder)
         {
-            builder.ToTable("Compra");
+            builder.ToTable("compra");
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id).HasColumnName("Idcompra").UseIdentityColumn();
-            builder.Property(x => x.PersonId).HasColumnName("Idpessoa");
-            builder.Property(x => x.ProductId).HasColumnName("Idproduto");
-            builder.Property(x => x.Date).HasColumnName("Datacompra");
+            builder.Property(x => x.Id).HasColumnName("idcompra").UseIdentityColumn();
+            builder.Property(x => x.PersonId).HasColumnName("idpessoa");
+            builder.Property(x => x.ProductId).HasColumnName("idproduto");
+            builder.Property(x => x.Date).HasColumnName("datacompra");
 
             builder.HasOne(x => x.Person).WithMany(x => x.Purchases);
 
