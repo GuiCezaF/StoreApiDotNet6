@@ -9,6 +9,7 @@ namespace MP.ApiDotNet6.Application.Mapping
         public DtoToDomainMapping()
         {
             CreateMap<PersonDTO, Person>();
+            CreateMap<ProductDTO, Products>();
         }
     }
 }
