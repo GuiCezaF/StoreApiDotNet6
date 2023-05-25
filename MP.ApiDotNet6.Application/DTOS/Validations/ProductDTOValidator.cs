@@ -6,7 +6,7 @@ namespace MP.ApiDotNet6.Application.DTOS.Validations
     {
         public ProductDTOValidator()
         {
-            RuleFor(x => x.CodErp)
+            RuleFor(x => x.CodeErp)
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("CodErp Deve ser informado");
