@@ -35,5 +35,21 @@ namespace MP.ApiDotNet6.Application.Services
       var data = await _productRepository.CreateAsync(product);
       return ResultService.Ok<ProductDTO>(_mapper.Map<ProductDTO>(data));
     }
+
+    public async Task<ResultService<ICollection<ProductDTO>>> GetAsync()
+    {
+      var products = await _productRepository.GetProductsAsync();
+      return ResultService.Ok<ICollection<ProductDTO>>(_mapper.Map<ICollection<ProductDTO>>(products));
+    }
+
+    public async Task<ResultService<ProductDTO>> GetByIdAsync(int id)
+    {
+      var product = await _productRepository.GetByIdAsync(id);
+      if (product == null)
+      {
+        return ResultService.Fail<ProductDTO>("Produto não encontrado");
+      }
+      return ResultService.Ok<ProductDTO>(_mapper.Map<ProductDTO>(product));
+    }
   }
 }
