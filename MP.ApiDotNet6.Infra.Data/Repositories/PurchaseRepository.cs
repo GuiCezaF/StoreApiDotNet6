@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using MP.ApiDotNet6.Domain.Entities;
 using MP.ApiDotNet6.Infra.Data.Context;
+using MP.ApiDotNet6.Domain.Repositories.Interfaces;
+
 
 namespace MP.ApiDotNet6.Infra.Data.Repositories
 {
-    public class PurchaseRepository
+    public class PurchaseRepository : IPurchaseRepository
     {
         private readonly ApplicationDbContext _db;
 
