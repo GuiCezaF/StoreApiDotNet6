@@ -14,7 +14,7 @@ namespace MP.ApiDotNet6.Infra.Data.Maps
             builder.Property(x => x.Id).HasColumnName("idcompra").UseIdentityColumn();
             builder.Property(x => x.PersonId).HasColumnName("idpessoa");
             builder.Property(x => x.ProductId).HasColumnName("idproduto");
-            builder.Property(x => x.Date).HasColumnName("datacompra");
+            builder.Property(x => x.Date).HasColumnType("date").HasColumnName("datacompra");
 
             builder.HasOne(x => x.Person).WithMany(x => x.Purchases);
 
