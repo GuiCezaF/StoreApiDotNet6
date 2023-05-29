@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using Microsoft.EntityFrameworkCore;
 using MP.ApiDotNet6.Domain.Entities;
 using MP.ApiDotNet6.Domain.Repositories.Interfaces;
@@ -14,6 +13,7 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
         {
             _db = db;
         }
+
         public async Task<Person> CreateAsync(Person person)
         {
             _db.Add(person);
@@ -25,14 +25,12 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
         {
             _db.Remove(person);
             await _db.SaveChangesAsync();
-
         }
 
         public async Task EditAsync(Person person)
         {
             _db.Update(person);
             await _db.SaveChangesAsync();
-
         }
 
         public async Task<Person> GetByIdAsync(int id)
@@ -49,5 +47,5 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
         {
             return (await _db.People.FirstOrDefaultAsync(x => x.Document == document))?.Id ?? 0;
         }
-  }
+    }
 }

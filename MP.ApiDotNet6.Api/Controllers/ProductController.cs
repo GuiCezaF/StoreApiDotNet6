@@ -4,7 +4,7 @@ using MP.ApiDotNet6.Application.Services.Interfaces;
 
 namespace MP.ApiDotNet6.Api.Controllers
 {
-  [ApiController]
+    [ApiController]
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
@@ -30,7 +30,7 @@ namespace MP.ApiDotNet6.Api.Controllers
         public async Task<ActionResult> GetAsync()
         {
             var result = await _productService.GetAsync();
-            if ( result.IsSucess)
+            if (result.IsSucess)
             {
                 return Ok(result);
             }
@@ -59,7 +59,7 @@ namespace MP.ApiDotNet6.Api.Controllers
             }
             return BadRequest(result);
         }
-        
+
         [HttpDelete]
         [Route("{id}")]
         public async Task<ActionResult> DeleteAsync(int id)
@@ -71,5 +71,5 @@ namespace MP.ApiDotNet6.Api.Controllers
             }
             return BadRequest(result);
         }
-  }
+    }
 }

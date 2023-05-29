@@ -22,7 +22,6 @@ namespace MP.ApiDotNet6.Domain.Entities
             Id = id;
             Validation(document, name, phone);
             Purchases = new List<Purchase>();
-
         }
 
         private void Validation(string document, string name, string phone)

@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MP.ApiDotNet6.Domain.Entities;
-using MP.ApiDotNet6.Infra.Data.Context;
 using MP.ApiDotNet6.Domain.Repositories.Interfaces;
-
+using MP.ApiDotNet6.Infra.Data.Context;
 
 namespace MP.ApiDotNet6.Infra.Data.Repositories
 {
@@ -50,7 +49,6 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
                             .Include(x => x.Products)
                             .Include(x => x.Person)
                             .Where(x => x.PersonId == personId).ToListAsync();
-            
         }
 
         public async Task<ICollection<Purchase>> GetByProductIdAsync(int productId)
@@ -59,8 +57,6 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
                             .Include(x => x.Products)
                             .Include(x => x.Person)
                             .Where(x => x.ProductId == productId).ToListAsync();
-
-            
         }
 
         public async Task<ICollection<Purchase>> GetAllAsync()
@@ -69,6 +65,6 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
                             .Include(x => x.Products)
                             .Include(x => x.Person)
                             .ToListAsync();
+        }
     }
-}
 }

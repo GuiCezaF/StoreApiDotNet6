@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace MP.ApiDotNet6.Application.DTOS.Validations
 {
-  public class ProductDTOValidator : AbstractValidator<ProductDTO>
+    public class ProductDTOValidator : AbstractValidator<ProductDTO>
     {
         public ProductDTOValidator()
         {

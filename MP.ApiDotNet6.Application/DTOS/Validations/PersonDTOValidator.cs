@@ -20,7 +20,6 @@ namespace MP.ApiDotNet6.Application.DTOS.Validations
             .NotNull()
             .NotEmpty()
             .WithMessage("Telefone deve ser Informado");
-
         }
     }
 }

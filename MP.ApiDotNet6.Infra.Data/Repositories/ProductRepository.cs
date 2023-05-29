@@ -7,12 +7,13 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-
         private readonly ApplicationDbContext _db;
+
         public ProductRepository(ApplicationDbContext db)
         {
             _db = db;
         }
+
         public async Task<Products> CreateAsync(Products products)
         {
             _db.Add(products);
@@ -24,7 +25,6 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
         {
             _db.Remove(products);
             await _db.SaveChangesAsync();
-
         }
 
         public async Task EditAsync(Products products)
@@ -47,5 +47,5 @@ namespace MP.ApiDotNet6.Infra.Data.Repositories
         {
             return (await _db.Products.FirstOrDefaultAsync(x => x.CodeErp == codeErp))?.Id ?? 0;
         }
-  }
+    }
 }

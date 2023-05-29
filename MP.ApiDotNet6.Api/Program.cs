@@ -1,5 +1,5 @@
-using System.Text.Json.Serialization;
 using MP.ApiDotNet6.Infra.IoC;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +12,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddServices(builder.Configuration);
-builder.Services.AddMvc().AddJsonOptions(options => {
+builder.Services.AddMvc().AddJsonOptions(options =>
+{
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
@@ -28,7 +29,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
 
 app.MapControllers();
 

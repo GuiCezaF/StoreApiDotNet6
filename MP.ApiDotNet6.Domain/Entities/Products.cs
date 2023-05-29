@@ -14,7 +14,6 @@ namespace MP.ApiDotNet6.Domain.Entities
         {
             Validation(name, codeErp, price);
             Purchases = new List<Purchase>();
-
         }
 
         public Products(int id, string name, string codeErp, decimal price)
@@ -23,7 +22,6 @@ namespace MP.ApiDotNet6.Domain.Entities
             Id = id;
             Validation(name, codeErp, price);
             Purchases = new List<Purchase>();
-
         }
 
         private void Validation(string name, string codeErp, decimal price)

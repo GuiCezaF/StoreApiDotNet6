@@ -4,7 +4,7 @@ using MP.ApiDotNet6.Domain.Entities;
 
 namespace MP.ApiDotNet6.Application.Mapping
 {
-  public class DtoToDomainMapping : Profile
+    public class DtoToDomainMapping : Profile
     {
         public DtoToDomainMapping()
         {

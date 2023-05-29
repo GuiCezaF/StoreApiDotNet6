@@ -12,7 +12,6 @@ namespace MP.ApiDotNet6.Infra.Data.Context
         public DbSet<Products> Products { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

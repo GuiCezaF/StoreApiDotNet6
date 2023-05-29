@@ -20,6 +20,7 @@ namespace MP.ApiDotNet6.Application.Services
                 .ToList()
             };
         }
+
         public static ResultService<T> RequestError<T>(string message, ValidationResult validationResult)
         {
             return new ResultService<T>
@@ -34,9 +35,11 @@ namespace MP.ApiDotNet6.Application.Services
         }
 
         public static ResultService Fail(string message) => new ResultService { IsSucess = false, Message = message };
+
         public static ResultService<T> Fail<T>(string message) => new ResultService<T> { IsSucess = false, Message = message };
 
         public static ResultService Ok(string message) => new ResultService { IsSucess = true, Message = message };
+
         public static ResultService<T> Ok<T>(T data) => new ResultService<T> { IsSucess = true, Data = data };
     }
 
