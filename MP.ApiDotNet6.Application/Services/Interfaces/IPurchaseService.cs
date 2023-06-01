@@ -6,8 +6,12 @@ namespace MP.ApiDotNet6.Application.Services.Interfaces
     {
         Task<ResultService<PurchaseDTO>> CreateAsync(PurchaseDTO purchaseDTO);
 
-        Task<ResultService<PurchateDetailDTO>> GetByIdAsync(int id);
+        Task<ResultService<PurchaseDetailDTO>> GetByIdAsync(int id);
 
-        Task<ResultService<ICollection<PurchateDetailDTO>>> GetAsync();
+        Task<ResultService<ICollection<PurchaseDetailDTO>>> GetAsync();
+
+        Task<ResultService<PurchaseDTO>> UpdateAsync(PurchaseDTO purchaseDTO);
+
+        Task<ResultService> RemoveAsync(int id);
     }
 }

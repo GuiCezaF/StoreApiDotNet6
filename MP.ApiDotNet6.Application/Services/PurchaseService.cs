@@ -45,20 +45,57 @@ namespace MP.ApiDotNet6.Application.Services
             return ResultService.Ok<PurchaseDTO>(purchaseDTO);
         }
 
-        public async Task<ResultService<ICollection<PurchateDetailDTO>>> GetAsync()
+        public async Task<ResultService<ICollection<PurchaseDetailDTO>>> GetAsync()
         {
             var purchases = await _purchaseRepository.GetAllAsync();
-            return ResultService.Ok(_mapper.Map<ICollection<PurchateDetailDTO>>(purchases));
+            return ResultService.Ok(_mapper.Map<ICollection<PurchaseDetailDTO>>(purchases));
         }
 
-        public async Task<ResultService<PurchateDetailDTO>> GetByIdAsync(int id)
+        public async Task<ResultService<PurchaseDetailDTO>> GetByIdAsync(int id)
         {
             var purchase = await _purchaseRepository.GetByIdAsync(id);
             if (purchase == null)
             {
-                return ResultService.Fail<PurchateDetailDTO>("Compra não encontrada");
+                return ResultService.Fail<PurchaseDetailDTO>("Compra não encontrada");
             }
-            return ResultService.Ok(_mapper.Map<PurchateDetailDTO>(purchase));
+            return ResultService.Ok(_mapper.Map<PurchaseDetailDTO>(purchase));
+        }
+
+        public async Task<ResultService> RemoveAsync(int id)
+        {
+            var purchase = await _purchaseRepository.GetByIdAsync(id);
+            if (purchase == null)
+            {
+                return ResultService.Fail("Compra não encontrada");
+            }
+            await _purchaseRepository.DeleteAsync(purchase);
+            return ResultService.Ok($"Produto do id: {id} foi deletado");
+        }
+
+        public async Task<ResultService<PurchaseDTO>> UpdateAsync(PurchaseDTO purchaseDTO)
+        {
+            if (purchaseDTO == null)
+            {
+                return ResultService.Fail<PurchaseDTO>("O Objeto deve ser informado");
+            }
+
+            var result = new PurchaseDTOValidator().Validate(purchaseDTO);
+            if (!result.IsValid)
+            {
+                return ResultService.RequestError<PurchaseDTO>("Problemas de validação", result);
+            }
+            var purchase = await _purchaseRepository.GetByIdAsync(purchaseDTO.Id);
+            if (purchase == null)
+            {
+                return ResultService.Fail<PurchaseDTO>("Compra não encontrada");
+            }
+            var productId = await _productRepository.GetIdByCodErpAync(purchaseDTO.CodeErp);
+            var personId = await _personRepository.GetIdByDocumentAsync(purchaseDTO.Document);
+            purchase.Edit(purchase.Id, productId, personId);
+
+            await _purchaseRepository.EditAsync(purchase);
+
+            return ResultService.Ok(purchaseDTO);
         }
     }
 }
