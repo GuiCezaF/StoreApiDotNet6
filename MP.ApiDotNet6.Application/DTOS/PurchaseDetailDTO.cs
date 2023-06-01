@@ -1,6 +1,6 @@
 ﻿namespace MP.ApiDotNet6.Application.DTOS
 {
-    public class PurchateDetailDTO
+    public class PurchaseDetailDTO
     {
         public int Id { get; set; }
         public string Person { get; set; }
