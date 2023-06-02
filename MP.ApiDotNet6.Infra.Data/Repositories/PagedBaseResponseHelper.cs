@@ -3,7 +3,7 @@ using MP.ApiDotNet6.Domain.Repositories;
 
 namespace MP.ApiDotNet6.Infra.Data.Repositories
 {
-    public static class PagedBseRequestResponseHelper
+    public static class PagedBaseResponseHelper
     {
         public static async Task<TResponse> GetResponseAsync<TResponse, T>
             (IQueryable<T> query, PagedBaseRequest request)

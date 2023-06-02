@@ -1,4 +1,5 @@
 using MP.ApiDotNet6.Domain.Entities;
+using MP.ApiDotNet6.Domain.FiltersDb;
 
 namespace MP.ApiDotNet6.Domain.Repositories.Interfaces
 {
@@ -15,5 +16,7 @@ namespace MP.ApiDotNet6.Domain.Repositories.Interfaces
         Task DeleteAsync(Person person);
 
         Task<int> GetIdByDocumentAsync(string document);
+
+        Task<PagedBaseResponse<Person>> GetPagedAsync(PersonFilterDb request);
     }
 }
