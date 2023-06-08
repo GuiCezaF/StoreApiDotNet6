@@ -4,7 +4,7 @@ Esse projeto se trata de um estudo e aplicação dos conceitos de API Rest, util
 O projeto em si é um Backend de uma loja, onde é possivel cadastrar usuarios, produtos e realizar compras
 
 # O que foi utilizado
-. Entity Framework
-. JWT
-. Postgres
-. ASP.Net 6 
+. Entity Framework <br/>
+. JWT <br/>
+. Postgres <br/>
+. ASP.Net 6 <br/>
