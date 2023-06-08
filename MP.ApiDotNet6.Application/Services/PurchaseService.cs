@@ -13,13 +13,15 @@ namespace MP.ApiDotNet6.Application.Services
         private readonly IPersonRepository _personRepository;
         private readonly IPurchaseRepository _purchaseRepository;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PurchaseService(IProductRepository productRepository, IPersonRepository personRepository, IPurchaseRepository purchaseRepository, IMapper mapper)
+        public PurchaseService(IProductRepository productRepository, IPersonRepository personRepository, IPurchaseRepository purchaseRepository, IMapper mapper, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
             _personRepository = personRepository;
             _purchaseRepository = purchaseRepository;
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<ResultService<PurchaseDTO>> CreateAsync(PurchaseDTO purchaseDTO)
@@ -35,14 +37,31 @@ namespace MP.ApiDotNet6.Application.Services
                 return ResultService.RequestError<PurchaseDTO>("Problemas de validação", validate);
             }
 
-            var productId = await _productRepository.GetIdByCodErpAync(purchaseDTO.CodeErp);
-            var personId = await _personRepository.GetIdByDocumentAsync(purchaseDTO.Document);
-            var purchase = new Purchase(productId, personId);
+            try
+            {
+                await _unitOfWork.BeginTransaction();
 
-            var data = await _purchaseRepository.CreateAsync(purchase);
-            purchaseDTO.Id = data.Id;
+                var productId = await _productRepository.GetIdByCodErpAync(purchaseDTO.CodeErp);
+                if (productId == 0)
+                {
+                    var product = new Products(purchaseDTO.ProductName, purchaseDTO.CodeErp, purchaseDTO.Price ?? 0);
+                    await _productRepository.CreateAsync(product);
+                    productId = product.Id;
+                }
+                var personId = await _personRepository.GetIdByDocumentAsync(purchaseDTO.Document);
+                var purchase = new Purchase(productId, personId);
 
-            return ResultService.Ok<PurchaseDTO>(purchaseDTO);
+                var data = await _purchaseRepository.CreateAsync(purchase);
+                purchaseDTO.Id = data.Id;
+
+                await _unitOfWork.Commit();
+                return ResultService.Ok<PurchaseDTO>(purchaseDTO);
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.Rollback();
+                return ResultService.Fail<PurchaseDTO>($"{ex.Message}");
+            }
         }
 
         public async Task<ResultService<ICollection<PurchaseDetailDTO>>> GetAsync()
