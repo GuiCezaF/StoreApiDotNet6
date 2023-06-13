@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MP.ApiDotNet6.Application.DTOS;
 using MP.ApiDotNet6.Application.Services;
