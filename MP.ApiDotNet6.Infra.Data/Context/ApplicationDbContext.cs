@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MP.ApiDotNet6.Domain;
 using MP.ApiDotNet6.Domain.Entities;
 
 namespace MP.ApiDotNet6.Infra.Data.Context
@@ -12,6 +13,7 @@ namespace MP.ApiDotNet6.Infra.Data.Context
         public DbSet<Products> Products { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<PersonImage> personImages{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
