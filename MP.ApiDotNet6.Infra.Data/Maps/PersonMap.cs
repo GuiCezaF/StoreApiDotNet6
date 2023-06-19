@@ -17,6 +17,7 @@ namespace MP.ApiDotNet6.Infra.Data.Maps
             builder.Property(c => c.Phone).HasColumnName("celular");
 
             builder.HasMany(c => c.Purchases).WithOne(p => p.Person).HasForeignKey(c => c.PersonId);
+            builder.HasMany(c => c.PersonImages).WithOne(p => p.Person).HasForeignKey(c => c.PersonId);
         }
     }
 }
