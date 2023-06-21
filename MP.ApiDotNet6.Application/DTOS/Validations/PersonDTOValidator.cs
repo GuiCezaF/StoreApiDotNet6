@@ -2,9 +2,9 @@ using FluentValidation;
 
 namespace MP.ApiDotNet6.Application.DTOS.Validations
 {
-    public class PersonDTOValidator : AbstractValidator<PersonDTO>
+    public class PersonImageDTOValidator : AbstractValidator<PersonDTO>
     {
-        public PersonDTOValidator()
+        public PersonImageDTOValidator()
         {
             RuleFor(x => x.Document)
             .NotEmpty()

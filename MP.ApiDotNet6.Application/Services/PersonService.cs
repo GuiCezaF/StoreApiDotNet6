@@ -26,7 +26,7 @@ namespace MP.ApiDotNet6.Application.Services
                 return ResultService.Fail<PersonDTO>("Objeto deve ser informado");
             }
 
-            var result = new PersonDTOValidator().Validate(personDTO);
+            var result = new PersonImageDTOValidator().Validate(personDTO);
             if (!result.IsValid)
             {
                 return ResultService.RequestError<PersonDTO>("Problemas de validade!", result);
@@ -62,7 +62,7 @@ namespace MP.ApiDotNet6.Application.Services
             {
                 return ResultService.Fail("Objeto deve ser informado");
             }
-            var validation = new PersonDTOValidator().Validate(personDTO);
+            var validation = new PersonImageDTOValidator().Validate(personDTO);
             if (!validation.IsValid)
             {
                 return ResultService.RequestError("Problema com a validação dos campos", validation);
