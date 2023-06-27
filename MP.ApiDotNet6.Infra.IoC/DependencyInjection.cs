@@ -6,9 +6,11 @@ using MP.ApiDotNet6.Application.Services;
 using MP.ApiDotNet6.Application.Services.Interfaces;
 using MP.ApiDotNet6.Domain;
 using MP.ApiDotNet6.Domain.Authentication;
+using MP.ApiDotNet6.Domain.Integration;
 using MP.ApiDotNet6.Domain.Repositories.Interfaces;
 using MP.ApiDotNet6.Infra.Data.Authentication;
 using MP.ApiDotNet6.Infra.Data.Context;
+using MP.ApiDotNet6.Infra.Data.Integration;
 using MP.ApiDotNet6.Infra.Data.Repositories;
 
 namespace MP.ApiDotNet6.Infra.IoC
@@ -27,6 +29,7 @@ namespace MP.ApiDotNet6.Infra.IoC
             services.AddScoped<ITokenGenerator, TokenGenerator>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPersonImageRepository, PersonImageRepository>();
+            services.AddScoped<ISavePersonImage, SavePersonImage>();
 
             return services;
         }

@@ -8,7 +8,7 @@ namespace MP.ApiDotNet6.Infra.Data.Integration
 
         public SavePersonImage()
         {
-            _filePath = "./../../Images";
+            _filePath = "./../Images";
         }
 
         public string Save(string imageBase64)
